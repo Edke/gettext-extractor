@@ -39,7 +39,11 @@ class PHPFilter extends AFilter implements iFilter {
 	 */
 	public function extract($file) {
 		$data = array();
-		$iterator = new ArrayIterator(token_get_all(file_get_contents($file)));
+                $contents = file_get_contents($file);
+                if (\preg_match('#(\*\s\@ge\-skip)#', $contents)){
+                    return $data;
+                }
+		$iterator = new ArrayIterator(token_get_all($contents));
 		while ($iterator->valid()) {
 			$token = $iterator->current();
 			$key = $iterator->key();
