@@ -18,20 +18,18 @@
  * Gettext parser filters interface
  * @author Karel Klíma
  */
-interface iFilter
-{
+interface iFilter {
+    const CONTEXT = 'context';
+    const SINGULAR = 'singular';
+    const PLURAL = 'plural';
+    const LINE = 'line';
+    const FILE = 'file';
 
-	const CONTEXT = 'context';
-	const SINGULAR = 'singular';
-	const PLURAL = 'plural';
-	const LINE = 'line';
-	const FILE = 'file';
-
-	/**
-	 * Extracts gettext phrases from a file
-	 * 
-	 * @param string $file
-	 * @return array List<Map<KEY, string>>
-	 */
+    /**
+     * Extracts gettext phrases from a file
+     *
+     * @param string $file
+     * @return array List<Map<KEY, string>>
+     */
     public function extract($file);
 }

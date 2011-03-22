@@ -9,7 +9,6 @@
  * @license    New BSD License
  * @package    Nette Extras
  */
-
 require dirname(__FILE__) . '/NetteGettextExtractor.php';
 
 $output = 'php://stdout';
@@ -21,7 +20,7 @@ $options = getopt('o::l::f:hk:');
 
 
 if (isset($options['h'])) {
-	echo <<<EOF
+    echo <<<EOF
 Usage {$argv[0]} [options]
 
 Options:
@@ -36,52 +35,52 @@ Options:
 				can be specified several times
 
 EOF;
-	exit;
+    exit;
 }
 if (isset($options['l'])) {
-	if (is_array($options['l'])) {
-		echo "Specify only one log file.\n";
-		exit;
-	}
-	$log = $options['l'];
+    if (is_array($options['l'])) {
+        echo "Specify only one log file.\n";
+        exit;
+    }
+    $log = $options['l'];
 }
 if (isset($options['o'])) {
-	if (is_array($options['o'])) {
-		echo "Specify only one output file.\n";
-		exit;
-	}
-	$output = $options['o'];
+    if (is_array($options['o'])) {
+        echo "Specify only one output file.\n";
+        exit;
+    }
+    $output = $options['o'];
 }
 if (!isset($options['f'])) {
-	echo "No input files given.\n";
-	echo "Try '{$argv[0]} -h' for more informations.\n";
-	exit;
+    echo "No input files given.\n";
+    echo "Try '{$argv[0]} -h' for more informations.\n";
+    exit;
 }
 if (isset($options['k'])) {
-	$keywords = array();
-	if (is_string($options['k'])) {
-		$options['k'] = array($options['k']);
-	}
-	foreach ($options['k'] as $value) {
-		$filter = $function = $params = null;
-		list ($filter, $function, $params) = explode(':', $value);
-		$singular = $plural = $context = null;
-		$params = explode(',', $params);
-		foreach ($params as &$param) {
-			$param = (int)$param;
-			if ($param === 0) {
-				$param = null;
-			}
-		}
-		list ($singular, $plural, $context) = $params;
-		$keywords[] = array(
-			'filter' => $filter,
-			'function' => $function,
-			'singular' => $singular,
-			'plural' => $plural,
-			'context' => $context
-		);
-	}
+    $keywords = array();
+    if (is_string($options['k'])) {
+        $options['k'] = array($options['k']);
+    }
+    foreach ($options['k'] as $value) {
+        $filter = $function = $params = null;
+        list ($filter, $function, $params) = explode(':', $value);
+        $singular = $plural = $context = null;
+        $params = explode(',', $params);
+        foreach ($params as &$param) {
+            $param = (int) $param;
+            if ($param === 0) {
+                $param = null;
+            }
+        }
+        list ($singular, $plural, $context) = $params;
+        $keywords[] = array(
+            'filter' => $filter,
+            'function' => $function,
+            'singular' => $singular,
+            'plural' => $plural,
+            'context' => $context
+        );
+    }
 }
 
 $extractor = new NetteGettextExtractor($log);
@@ -90,10 +89,10 @@ $extractor->setupForms()
         ->setupMenu();
 
 if ($keywords !== null) {
-	foreach ($keywords as $value) {
-		$extractor->getFilter($value['filter'])
-				->addFunction($value['function'], $value['singular'], $value['plural'], $value['context']);
-	}
+    foreach ($keywords as $value) {
+        $extractor->getFilter($value['filter'])
+                ->addFunction($value['function'], $value['singular'], $value['plural'], $value['context']);
+    }
 }
 $extractor->scan($options['f']);
 $extractor->save($output);
