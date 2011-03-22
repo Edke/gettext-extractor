@@ -76,7 +76,8 @@ class NetteGettextExtractor extends GettextExtractor {
                 ->addFunction('addText', 2)
                 ->addFunction('addTextArea', 2)
                 ->addFunction('skipFirst')
-                ->addFunction('addProtection');
+                ->addFunction('addProtection')
+                ->addFunction('setRequired', 1);
 
         return $this;
     }
