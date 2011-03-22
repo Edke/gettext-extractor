@@ -108,5 +108,3 @@ abstract class AFilter {
     }
 
 }
-
-?>
