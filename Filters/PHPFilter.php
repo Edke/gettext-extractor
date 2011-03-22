@@ -22,8 +22,10 @@ class PHPFilter extends AFilter implements iFilter {
     public function __construct() {
         $this->addFunction('gettext', 1);
         $this->addFunction('_', 1);
+        $this->addFunction('t', 1);
         $this->addFunction('ngettext', 1, 2);
         $this->addFunction('_n', 1, 2);
+        $this->addFunction('nt', 1, 1);
         $this->addFunction('pgettext', 2, null, 1);
         $this->addFunction('_p', 2, null, 1);
         $this->addFunction('npgettext', 2, 3, 1);
