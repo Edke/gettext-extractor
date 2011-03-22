@@ -123,8 +123,12 @@ class PHPFilter extends AFilter implements iFilter {
         $iterator->next();
         while ($iterator->valid()) {
             $param = $this->extractParameter($iterator, $data);
-            if (isset($definition[$position]) && is_string($param)) {
-                $message[$definition[$position]] = $param;
+            if (is_string($param) && count($definition) && in_array($position, $definition)) {
+                foreach ($definition as $_type => $_position) {
+                    if ($_position == $position) {
+                        $message[$_type] = $param;
+                    }
+                }
             }
             while ($iterator->valid()) {
                 $token = $iterator->current();
@@ -141,8 +145,8 @@ class PHPFilter extends AFilter implements iFilter {
         if (count($message) === 1) {
             return;
         }
-        foreach ($definition as $type) {
-            if (!isset($message[$type])) {
+        foreach ($definition as $_type => $_position) {
+            if (!isset($message[$_type])) {
                 return;
             }
         }

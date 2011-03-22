@@ -39,19 +39,19 @@ abstract class AFilter {
             throw new InvalidArgumentException('Invalid argument type or value given for paramater $singular.');
         }
         $function = array(
-            $singular => iFilter::SINGULAR
+            iFilter::SINGULAR => $singular
         );
         if ($plural !== null) {
             if (!is_int($plural) || $plural <= 0) {
                 throw new InvalidArgumentException('Invalid argument type or value given for paramater $plural.');
             }
-            $function[$plural] = iFilter::PLURAL;
+            $function[iFilter::PLURAL] = $plural;
         }
         if ($context !== null) {
             if (!is_int($context) || $context <= 0) {
                 throw new InvalidArgumentException('Invalid argument type or value given for paramater $context.');
             }
-            $function[$context] = iFilter::CONTEXT;
+            $function[iFilter::CONTEXT] = $context;
         }
         $this->functions[$functionName] = $function;
         return $this;
