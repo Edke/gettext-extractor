@@ -101,4 +101,15 @@ class NetteGettextExtractor extends GettextExtractor {
         return $this;
     }
 
+    /**
+     * Optional setup of Menu translations
+     *
+     * @return NetteGettextExtractor
+     */
+    public function setupMenu() {
+        $php = $this->getFilter('PHP');
+        $php->addFunction('addMenu', 1);
+        return $this;
+    }
+
 }

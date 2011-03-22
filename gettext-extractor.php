@@ -85,7 +85,10 @@ if (isset($options['k'])) {
 }
 
 $extractor = new NetteGettextExtractor($log);
-$extractor->setupForms()->setupDataGrid();
+$extractor->setupForms()
+        ->setupDataGrid()
+        ->setupMenu();
+
 if ($keywords !== null) {
 	foreach ($keywords as $value) {
 		$extractor->getFilter($value['filter'])
