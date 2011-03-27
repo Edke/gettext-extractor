@@ -49,7 +49,7 @@ class NetteLatteFilter extends AFilter implements iFilter {
     public function __construct() {
         $this->addFunction('_');
         $this->addFunction('!_');
-        $this->addFunction('_n', 1, 2);
+        $this->addFunction('_n', 1, 1);
         $this->addFunction('!_n', 1, 2);
         $this->addFunction('_p', 2, null, 1);
         $this->addFunction('!_p', 2, null, 1);
@@ -124,7 +124,7 @@ class NetteLatteFilter extends AFilter implements iFilter {
                 $result = array(
                     iFilter::LINE => $line + 1
                 );
-                foreach ($prefix as $position => $type) {
+                foreach ($prefix as $type => $position) {
                     if (!isset($params[$position]) || !$this->isStaticString($params[$position])) {
                         continue 2; // continue with next message
                     }
