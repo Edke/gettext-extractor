@@ -83,20 +83,24 @@ class NetteGettextExtractor extends GettextExtractor {
     }
 
     /**
+     * Optional setup of Nette application translations
+     *
+     * @return NetteGettextExtractor
+     */
+    public function setupApplication() {
+        $php = $this->getFilter('PHP');
+        $php->addFunction('flashMessage');
+        return $this;
+    }
+
+    /**
      * Optional setup of DataGrid component translations
      *
      * @return NetteGettextExtractor
      */
     public function setupDataGrid() {
         $php = $this->getFilter('PHP');
-        $php->addFunction('addColumn', 2)
-                ->addFunction('addNumericColumn', 2)
-                ->addFunction('addDateColumn', 2)
-                ->addFunction('addCheckboxColumn', 2)
-                ->addFunction('addImageColumn', 2)
-                ->addFunction('addPositionColumn', 2)
-                ->addFunction('addActionColumn')
-                ->addFunction('addAction');
+        $php->addFunction('addButton', 2);
 
         return $this;
     }
@@ -108,7 +112,9 @@ class NetteGettextExtractor extends GettextExtractor {
      */
     public function setupMenu() {
         $php = $this->getFilter('PHP');
-        $php->addFunction('addMenu', 1);
+        $php->addFunction('addMenu', 1)
+                ->addFunction('addDestinationMenu', 1)
+                ->addFunction('setText', 1);
         return $this;
     }
 

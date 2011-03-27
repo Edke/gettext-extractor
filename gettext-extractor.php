@@ -86,6 +86,7 @@ if (isset($options['k'])) {
 $extractor = new NetteGettextExtractor($log);
 $extractor->setupForms()
         ->setupDataGrid()
+        ->setupApplication()
         ->setupMenu();
 
 if ($keywords !== null) {
