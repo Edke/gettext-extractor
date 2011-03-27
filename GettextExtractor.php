@@ -318,7 +318,7 @@ class GettextExtractor {
 
         foreach ($data as $message) {
             foreach ($message['files'] as $file) {
-                $output[] = '#: ' . $file[iFilter::FILE] . ':' . $file[iFilter::LINE];
+                $output[] = '#: ' . getcwd() .'/'.$file[iFilter::FILE] . ':' . $file[iFilter::LINE];
             }
             if (isset($message[iFilter::CONTEXT])) {
                 $output[] = $this->formatMessage($message[iFilter::CONTEXT], "msgctxt");
