@@ -69,6 +69,7 @@ class NetteGettextExtractor extends GettextExtractor {
                 ->addFunction('addCheckbox', 2)
                 ->addFunction('addError')
                 ->addFunction('addFile', 2)
+                ->addFunction('addAppFile', 2)
                 ->addFunction('addGroup')
                 ->addFunction('addImage', 3)
                 ->addFunction('addmultiSelect', 2)
