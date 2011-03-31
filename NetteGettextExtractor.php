@@ -105,7 +105,8 @@ class NetteGettextExtractor extends GettextExtractor {
      */
     public function setupDataGrid() {
         $php = $this->getFilter('PHP');
-        $php->addFunction('addButton', 2);
+        $php->addFunction('addButton', 2)
+                ->addFunction('addColumn', 2);
 
         return $this;
     }
