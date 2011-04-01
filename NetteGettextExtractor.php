@@ -42,7 +42,8 @@ class NetteGettextExtractor extends GettextExtractor {
                 ->setFilter('phtml', 'NetteLatte')
                 ->setFilter('latte', 'PHP')
                 ->setFilter('latte', 'NetteLatte')
-                ->setFilter('ini', 'NetteConfig');
+                ->setFilter('ini', 'NetteConfig')
+                ->setFilter('neon', 'NetteNeon');
 
         $this->getFilter('PHP')
                 ->addFunction('translate');
@@ -53,6 +54,10 @@ class NetteGettextExtractor extends GettextExtractor {
 
         $this->getFilter('NetteConfig')
                 ->addPrefix('service.Translator.option.locale[]');
+
+        $this->getFilter('NetteNeon')
+                ->addPrefix('resources', 1)
+                ->addPrefix('roles', 0);
     }
 
     /**
