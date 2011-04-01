@@ -33,7 +33,7 @@ class NetteConfigFilter extends AFilter implements iFilter {
      * @param $singular int
      * @param $plural int|null
      * @param $context int|null
-     * @return NetteLatteFilter
+     * @return NetteConfigFilter
      */
     public function addPrefix($prefix, $singular = 1, $plural = null, $context = null) {
         $this->keys[$prefix] = $prefix;
@@ -45,7 +45,7 @@ class NetteConfigFilter extends AFilter implements iFilter {
      * Alias for AFilter::removeFunction
      *
      * @param string $prefix
-     * @return NetteLatteFilter
+     * @return NetteConfigFilter
      */
     public function removePrefix($prefix) {
         unset($this->keys[$prefix]);
@@ -73,7 +73,7 @@ class NetteConfigFilter extends AFilter implements iFilter {
                 /* $message[0] = key
                  * $message[1] = 1. parameter
                  */
-                
+
                 $result = array(
                     iFilter::LINE => $line + 1,
                     iFilter::SINGULAR => $this->stripQuotes($this->fixEscaping($message[2]))
@@ -85,16 +85,25 @@ class NetteConfigFilter extends AFilter implements iFilter {
         return $data;
     }
 
+    /**
+     * Creates regular expression
+     * @return string
+     */
     protected function createRegex() {
         $keys = array();
         foreach ($this->keys as $key) {
             $keys[] = $this->fixKeyRegexEscaping($key);
         }
-        
+
         $pattern = "#(%s)\s*=\s*(?:\"|')?([^\s\"']+)(?:\"|')?#i";
-        return sprintf($pattern, (count($keys) > 1  ? '('.implode('|', $keys).')' : $keys[0] ) );
+        return sprintf($pattern, (count($keys) > 1 ? '(' . implode('|', $keys) . ')' : $keys[0]));
     }
 
+    /**
+     * Fixes escaping of regular expression
+     * @param string $value
+     * @return string
+     */
     protected function fixKeyRegexEscaping($value) {
         $search = array(
             '.',
