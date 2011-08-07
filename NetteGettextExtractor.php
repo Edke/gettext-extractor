@@ -85,7 +85,8 @@ class NetteGettextExtractor extends GettextExtractor {
                 ->addFunction('addSubmit', 2)
                 ->addFunction('addText', 2)
                 ->addFunction('addTextArea', 2)
-                ->addFunction('skipFirst')
+                ->addFunction('skipFirst') // Deprecated; it's only needed for some Nette development versions
+                ->addFunction('setPrompt', 1)
                 ->addFunction('addProtection')
                 ->addFunction('setRequired', 1);
 
