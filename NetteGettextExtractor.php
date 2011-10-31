@@ -103,6 +103,7 @@ class NetteGettextExtractor extends GettextExtractor {
     public function setupApplication() {
         $php = $this->getFilter('PHP');
         $php->addFunction('flashMessage');
+        $php->addFunction('tr');
         return $this;
     }
 
