@@ -46,7 +46,8 @@ class NetteGettextExtractor extends GettextExtractor {
                 ->setFilter('neon', 'NetteNeon');
 
         $this->getFilter('PHP')
-                ->addFunction('translate');
+                ->addFunction('translate')
+                ->addFunction('tr');
 
         $this->getFilter('NetteLatte')
                 ->addPrefix('!_')
@@ -101,6 +102,7 @@ class NetteGettextExtractor extends GettextExtractor {
     public function setupApplication() {
         $php = $this->getFilter('PHP');
         $php->addFunction('flashMessage');
+        $php->addFunction('tr');
         return $this;
     }
 
