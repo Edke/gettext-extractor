@@ -89,7 +89,8 @@ class NetteGettextExtractor extends GettextExtractor {
                 ->addFunction('skipFirst') // Deprecated; it's only needed for some Nette development versions
                 ->addFunction('setPrompt', 1)
                 ->addFunction('addProtection')
-                ->addFunction('setRequired', 1);
+                ->addFunction('setRequired', 1)
+                ->addFunction('setOption', 2);
 
         return $this;
     }

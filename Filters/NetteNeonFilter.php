@@ -61,7 +61,7 @@ class NetteNeonFilter extends AFilter implements iFilter {
         $data = array();
 
         $contents = file_get_contents($file);
-        $neon = \Nette\Neon::decode($contents);
+        $neon = \Nette\Utils\Neon::decode($contents);
         foreach ($this->keys as $prefix => $singular) {
             /*
              * singular == 0 means message is key
