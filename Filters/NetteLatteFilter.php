@@ -50,6 +50,7 @@ class NetteLatteFilter extends AFilter implements iFilter {
         $this->addFunction('_');
         $this->addFunction('!_');
         $this->addFunction('_n', 1, 1);
+        $this->addFunction('n', 1, 1);
         $this->addFunction('!_n', 1, 2);
         $this->addFunction('_p', 2, null, 1);
         $this->addFunction('!_p', 2, null, 1);

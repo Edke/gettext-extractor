@@ -72,6 +72,7 @@ class NetteGettextExtractor extends GettextExtractor {
                 ->addFunction('setEmptyValue')
                 ->addFunction('setValue')
                 ->addFunction('addButton', 2)
+                ->addFunction('addButtonImpersonate', 2)
                 ->addFunction('addCheckbox', 2)
                 ->addFunction('addError')
                 ->addFunction('addFile', 2)
